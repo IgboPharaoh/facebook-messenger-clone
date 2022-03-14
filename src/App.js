@@ -1,4 +1,4 @@
-import { Button, FormControl, InputLabel, Input } from "@mui/material";
+import { FormControl, Input } from "@mui/material";
 import React, {useState, useEffect} from "react";
 import  './App.css'
 import db from "./components/Firebase";
@@ -6,6 +6,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import Message from "./components/Message";
 import FlipMove from 'react-flip-move';
+import SendIcon from '@mui/icons-material/Send';
+import { IconButton } from '@mui/material';
 
 function App() {
   const [input, setInput] = useState('')
@@ -39,11 +41,19 @@ function App() {
     <div className="App">
       <h1>Clever Programmers</h1>
       <p>attendance ongoing: {username}</p>
-      <form >
-        <FormControl>
-          <InputLabel >Send Message... </InputLabel>
-          <Input value={input} onChange={(e) =>setInput(e.target.value)}  />
-        <Button disabled={!input} variant='contained' color='primary' type="submit" onClick={sendMesssage}>Send Message</Button>
+      <form className="app__form" >
+        <FormControl className="app__formControl">
+          <Input placeholder='Enter a message' value={input} onChange={(e) =>setInput(e.target.value)} className="app__input" />
+          <IconButton
+            disabled={!input} 
+            variant='contained' 
+            color='primary' 
+            type="submit" 
+            onClick={sendMesssage}
+            className="app__iconButton"
+          >
+            <SendIcon/>
+          </IconButton>
         </FormControl>
       </form>
       <div>
