@@ -5,16 +5,16 @@ import Message from "./components/Message";
 
 function App() {
   const [input, setInput] = useState('')
+  const [username, setUsername] = useState('')
   const [messages, setMessages] = useState([
     {username: 'sunny', text: 'whats up'}, 
     {username: 'merchant', text: 'how many tap-ins have you scored'}
   ])
 
-  const [username, setUsername] = useState('')
 
   const sendMesssage = (e) => {
     e.preventDefault()
-    setMessages([...messages, {username: username, text: input} ])
+    setMessages([...messages, {username: username, text: input}])
     setInput('')
   }
 
@@ -36,7 +36,7 @@ function App() {
       <div>
         {
           messages.map((message) =>(
-              <Message key={message.text} username ={message.username} text={message.text}/>
+              <Message key={message.text} username={username} message={message}/>
             ))
           }
         </div>
